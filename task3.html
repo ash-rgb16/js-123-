@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="index.html">Return to Index</a>
+    <br>
+    <h1>JS Exercise 3</h1>
+    <table>
+        <tr>
+            <td>
+                <label for="elements">Input Number: </label>
+            </td>
+            <td>
+                <input type="number" name="input" id="input">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button onclick="pushToArr()">Insert</button>
+                <button onclick="clearEntries()">Delete All</button>
+            </td>
+        </tr>
+    </table>
+    <p style="font-weight: bold;">Elements inside the array:</p>
+    <p id="elements"></p>
+    <p>Sum:  <span id="sum"></span></p>
+    <script>
+        const inputData = document.getElementById("input")
+        const elementTxt = document.getElementById("elements");
+        const sumTxt = document.getElementById("sum");
+
+        let arr = [];
+        let sum = 0;
+
+        function pushToArr() {
+            if (!(inputData.value === "")) {
+                arr.push(parseInt(inputData.value));
+                inputData.value = "";
+
+                sum = 0;
+                for(let i=0; i<arr.length; i++ ) {
+                    sum += arr[i];
+                }
+            }
+
+            elementTxt.innerHTML = arr.join("<br>");
+            sumTxt.innerHTML = sum;
+            console.log(arr);
+        }
+
+        function clearEntries() {
+            inputData.value = "";
+            elementTxt.innerHTML = "";
+            sumTxt.innerHTML = "";
+            arr = [];
+            sum = 0;
+        }
+    </script>
+</body>
+</html>
